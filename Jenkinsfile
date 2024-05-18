@@ -11,7 +11,7 @@ pipeline{
       sh "chmod +x phpprojectcheck.sh && ./phpprojectcheck.sh"
       sh "ls"
       sh "cp Dockerfile index.php php-hello-world/"
-      sh "docker build -t php:$BUILD_NUMBER ."
+      sh "cd php-hello-world && docker build -t php:$BUILD_NUMBER ."
       }
     }
   }
