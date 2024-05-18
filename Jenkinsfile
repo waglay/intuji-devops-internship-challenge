@@ -10,7 +10,7 @@ pipeline{
       steps{
         sh "pwd"
         sh "ls"
-        sh "sudo chmod +x ./docker_install.sh"
+        sh "chmod +x ./docker_install.sh"
         sh "./docker_install.sh"
       }
     }
