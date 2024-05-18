@@ -23,6 +23,8 @@ pipeline{
     stage("removing previous images"){
       steps{
       sh "docker rmi php:$BUILD_NUMBER"
+      sh "docker rmi waglay14/php-app-intuji:$BUILD_NUMBER"
+      sh "docker rmi waglay14/php-app-intuji:latest"
       }
     }
     stage("launching app from compose"){
