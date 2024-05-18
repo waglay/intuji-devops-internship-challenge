@@ -14,5 +14,16 @@ pipeline{
       sh "cd php-hello-world && docker build -t php:$BUILD_NUMBER ."
       }
     }
+    stage("pushing to dockerhub"){
+      sh "docker tag php:$BUILD_NUMBER waglay14/php-app-intuji:$BUILD_NUMBER && docker push waglay14/php-app-intuji:$BUILD_NUMBER"
+      sh "docker tag php:$BUILD_NUMBER waglay14/php-app-intuji:latest && docker push waglay14/php-app-intuji:latest"
+    }
+    stage("removing previous images"){
+      sh "docker rmi php:$BUILD_NUMBER"
+    }
+    stage("launching app from compose"){
+      sh "docker-compose up -d"
+    }
+      
   }
 }
