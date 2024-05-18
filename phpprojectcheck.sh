@@ -1,8 +1,7 @@
 #!/bin/bash
-ls -al | grep php-hello-world
-if [ echo $? -eq 0]; then
-echo "File Exists"
+if ls -al | grep -q php-hello-world; then
+    echo "File Exists"
 else
-echo "Clone Project"
-git clone https://github.com/silarhi/php-hello-world.git
+    echo "Clone Project"
+    git clone https://github.com/silarhi/php-hello-world.git
 fi
