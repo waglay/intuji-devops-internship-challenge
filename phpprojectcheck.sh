@@ -1,3 +1,4 @@
+#!/bin/bash
 ls-al | grep php-hello-world
 if [ echo $? -eq 0]; then
 echo "File Exists"
