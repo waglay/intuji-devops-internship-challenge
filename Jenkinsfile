@@ -10,7 +10,8 @@ pipeline{
       steps{
       sh "chmod +x phpprojectcheck.sh && ./phpprojectcheck.sh"
       sh "ls"
-      sh "docker images"
+      sh "cp Dockerfile php-hello-world/"
+      sh "docker build -t php:$BUILD_NUMBER ."
       }
     }
   }
