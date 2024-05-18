@@ -6,5 +6,13 @@ pipeline{
          sh "echo hello"         
       }
     }
+    stage("Install docker and docker-compose"){
+      steps{
+        sh "pwd"
+        sh "ls"
+        sh "sudo chmod +x intuji-devops-internship-challenge/docker_install.sh"
+        sh "intuji-devops-internship-challenge/docker_install.sh"
+      }
+    }
   }
 }
