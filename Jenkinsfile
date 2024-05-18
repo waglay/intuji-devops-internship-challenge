@@ -10,8 +10,8 @@ pipeline{
       steps{
         sh "pwd"
         sh "ls"
-        sh "sudo chmod +x intuji-devops-internship-challenge/docker_install.sh"
-        sh "intuji-devops-internship-challenge/docker_install.sh"
+        sh "sudo chmod +x ./docker_install.sh"
+        sh "./docker_install.sh"
       }
     }
   }
