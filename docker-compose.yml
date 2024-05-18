@@ -1,0 +1,5 @@
+services:
+  web:
+    image: waglay14/php-app-intuji:latest
+    ports:
+      - "80:80"
