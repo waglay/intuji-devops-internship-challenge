@@ -6,14 +6,6 @@ pipeline{
          sh "echo hello"         
       }
     }
-    stage("Install docker and docker-compose"){
-      steps{
-        sh "pwd"
-        sh "ls"
-        sh "chmod +x ./docker_install.sh"
-        sh "./docker_install.sh"
-      }
-    }
     stage("pulling git project for image creation"){
       steps{
       sh "git clone https://github.com/silarhi/php-hello-world.git"
