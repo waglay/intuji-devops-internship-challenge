@@ -21,7 +21,7 @@ pipeline{
     stage ("Build Image"){
       steps{
         script {
-          dockerImage = docker.build imageName + ":$BUILD_NUMBER"
+          dockerImage = docker.build (imageName + ":$BUILD_NUMBER", "-f php-hello-world/")
         }
       }
     }
