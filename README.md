@@ -10,10 +10,11 @@ A pipeline job was build and periodic build was triggered for every minute. The 
 ![image](https://github.com/waglay/intuji-devops-internship-challenge/assets/138477319/ad2843ee-d5d7-4e01-8ee2-8af4719c1724)
 
 After successful pushing of image the updated dockerhub registry:
-![image](https://github.com/waglay/intuji-devops-internship-challenge/assets/138477319/62a5481c-05b6-4be1-b468-92f21627e3a4)
+![image](https://github.com/waglay/intuji-devops-internship-challenge/assets/138477319/81be7b52-6608-4af4-bf67-81410dae92a2)
 
 And the successful launching of the container with docker compose:
-![image](https://github.com/waglay/intuji-devops-internship-challenge/assets/138477319/1b34522c-3c7b-4734-b059-31630ea695ac)
+![image](https://github.com/waglay/intuji-devops-internship-challenge/assets/138477319/be07be69-7679-4f15-bbc4-f5c85649f821)
+
 
 Note: all the shell scripts before executions should be given permission as "chmod +x (example.sh)". 
       Also, the jenkins user must be added to the docker group and the credentials to the dockerhub should be provided in Manage Jenkins-          >credentials->system->addcredentials
