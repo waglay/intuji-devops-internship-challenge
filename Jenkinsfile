@@ -20,14 +20,14 @@ pipeline{
     }
     stage ("Build Image"){
       steps{
-        scripts{
+        script {
           dockerImage = docker.build imageName + ":$BUILD_NUMBER"
         }
       }
     }
     stage("pushing to dockerhub"){
       steps{
-      scripts{
+      script {
         docker.withRegistry('',credentials){
           dockerImage.push("$BUILD_NUMBER")
           dockerImage.push("latest")
