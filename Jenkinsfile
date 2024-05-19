@@ -1,5 +1,10 @@
 pipeline{
   agent any
+  environment {
+    credentials = "Dockerhub"
+    imageName = "waglay14/php-app-intuji"
+    registry = ""
+  }
   stages{
     stage("Echo Hello Just for fun"){
       steps{
@@ -11,20 +16,28 @@ pipeline{
       sh "chmod +x phpprojectcheck.sh && ./phpprojectcheck.sh"
       sh "ls"
       sh "cp Dockerfile index.php php-hello-world/"
-      sh "cd php-hello-world && docker build -t php:$BUILD_NUMBER ."
+      }
+    }
+    stage ("Build Image"){
+      steps{
+        scripts{
+          dockerImage = docker.build imageName + ":$BUILD_NUMBER"
+        }
       }
     }
     stage("pushing to dockerhub"){
       steps{
-      sh "docker tag php:$BUILD_NUMBER waglay14/php-app-intuji:$BUILD_NUMBER && docker push waglay14/php-app-intuji:$BUILD_NUMBER"
-      sh "docker tag php:$BUILD_NUMBER waglay14/php-app-intuji:latest && docker push waglay14/php-app-intuji:latest"
+      scripts{
+        docker.withRegistry('',credentials){
+          dockerImage.push("$BUILD_NUMBER")
+          dockerImage.push("latest")
+        }
+      }
       }
     }
     stage("removing previous images"){
       steps{
-      sh "docker rmi php:$BUILD_NUMBER"
-      sh "docker rmi waglay14/php-app-intuji:$BUILD_NUMBER"
-      sh "docker rmi waglay14/php-app-intuji:latest"
+      sh "docker rmi $imageName:$BUILD_NUMBER"
       }
     }
     stage("launching app from compose"){
